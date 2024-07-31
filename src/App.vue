@@ -29,8 +29,8 @@
       <v-main>
         <GridLayout
           v-model:layout="layoutJSON"
-          :is-draggable="drawer"
-          :is-resizable="drawer"
+          :is-draggable="mode"
+          :is-resizable="mode"
           :col-num="12"
           :row-height="30"
 
