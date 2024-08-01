@@ -7,6 +7,8 @@
   },
   "dependencies": {
     "echarts": "^5.4.0",
+    "grid-layout-plus": "^1.0.5",
+    "lodash": "^4.17.21",
     "uuid": "^9.0.0",
     "vue": "^3.2.41",
     "vue3-eventbus": "^2.0.0",
