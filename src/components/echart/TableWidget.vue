@@ -25,7 +25,7 @@ export default defineComponent({
   computed: {
     myStyle() {
       return {
-        weight: this.styleObj.weight,
+        width: this.styleObj.width,
         height: this.styleObj.height,
         padding: '10px',
         'padding-top': '30px',
@@ -33,7 +33,7 @@ export default defineComponent({
     },
     gridStyle() {
       return {
-        weight: '50%',
+        width: '50%',
         height: `calc(100%)`,
       }
     }

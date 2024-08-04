@@ -1,5 +1,5 @@
 <template>
-  <div ref="bar" :style="styleObj"></div>
+  <div ref="bar" style="background: #fff;" :style="styleObj"></div>
 </template>
 <script lang="ts" setup>
 import {ref, onUpdated, computed} from "vue"
@@ -13,7 +13,8 @@ const props = defineProps<{
 const styleObj = computed(() => {
   return {
     width: props.styleObj.width,
-    height: props.styleObj.height
+    height: props.styleObj.height,
+    //background: 'yellow'
   }
 })
 const bar = ref<HTMLElement>()

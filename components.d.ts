@@ -9,11 +9,21 @@ declare module '@vue/runtime-core' {
   export interface GlobalComponents {
     AttrPanel: typeof import('./src/components/common/AttrPanel.vue')['default']
     BarChart: typeof import('./src/components/echart/BarChart.vue')['default']
+    ChartAdapter: typeof import('./src/components/ChartAdapter.vue')['default']
+    copy: typeof import('./src/components/echart/TableWidget copy.vue')['default']
+    Dashboard: typeof import('./src/components/dashboard.vue')['default']
+    GridItem: typeof import('./src/components/grid-layout/GridItem.vue')['default']
+    GridLayout: typeof import('./src/components/grid-layout/GridLayout.vue')['default']
     LineChart: typeof import('./src/components/echart/LineChart.vue')['default']
+    LoadingMask: typeof import('./src/components/vue-smart-widget/LoadingMask.vue')['default']
     PieChart: typeof import('./src/components/echart/PieChart.vue')['default']
     SideBar: typeof import('./src/components/common/SideBar.vue')['default']
+    SmartWidget: typeof import('./src/components/vue-smart-widget/SmartWidget.vue')['default']
+    SmartWidgetGrid: typeof import('./src/components/vue-smart-widget/SmartWidgetGrid.vue')['default']
+    Statistic: typeof import('./src/components/Statistic.vue')['default']
     TableWidget: typeof import('./src/components/echart/TableWidget.vue')['default']
     ToolBar: typeof import('./src/components/common/ToolBar.vue')['default']
     Widget_preview: typeof import('./src/components/echart/widget_preview.vue')['default']
+    WidgetCalendar: typeof import('./src/components/echart/widgetCalendar.vue')['default']
   }
 }

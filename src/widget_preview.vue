@@ -1,48 +1,55 @@
 <template>
   <div class="widget-wrapper" 
     draggable="true" 
-    @dragstart="handleDragStart"
-    @dragover="handleDragOver"
-    @drop="handleDrop"
+    @dragstart="onDragStart"
+    @dragend="onDragEnd"
+    @drag="onDrag"
   >
-    <p>{{id}}</p>
+    <p>{{item}}</p>
   </div>
 </template>
 
-<script>
-import { defineComponent } from 'vue';
+<script setup lang="ts">
+import { ref, defineProps } from 'vue';
+import _ from 'lodash'
 //import eventBus from 'vue3-eventbus'
-//  vue-grid-item vue-resizable cssTransforms l-item
 
-export default defineComponent({
-  props: {
-    id: {
-      type: String,
-      default: 'default_id'
-    },
-    x: {
-      type: Number,
-      default: 0
-    },
-    y: {
-      type: Number,
-      default: 0
+const props = defineProps<{
+  item: {
+    type: any,
+    default: {
+      x: 0,
+      y: 0,
+      w: 0,
+      h: 0,
+      i: '',
+      component: ''
     }
   },
-  methods: {
-    handleDragStart(event) {
-      event.dataTransfer.setData("text/plain", JSON.stringify({ id: this.id, x: 0, y: 0 }));
-    },
-    handleDragOver(event) {
-      event.preventDefault();
-    },
-    handleDrop(event) {
-      //event.preventDefault();
-      //const data = event.dataTransfer.getData("text/plain");
-      //eventBus.emit('gridItemDropped', id.value, x.value, y.value, data);
-    },
-  }
-});
+  onDrag?: (event: DragEvent, item: any) => void;
+  onDrop?: (event: DragEvent, item: any) => void;
+}>()
+
+const isDragging = ref<boolean>(false)
+
+const onDragStart = (event: DragEvent) => {
+  isDragging.value = true;
+  event.dataTransfer?.setData("text/plain", JSON.stringify(props.item));
+}
+
+const onDragEnd = (event: DragEvent) => {
+  if (!isDragging.value) return;
+  if (props.onDrop) props.onDrop(event, props.item)
+  isDragging.value = false;
+}
+
+const onDrag = _.throttle((event: DragEvent) => {
+  if (!isDragging.value) return;
+  if (props.onDrag) props.onDrag(event, props.item)
+}, 200, { trailing: true })
+
+
+
 </script>
 
 <style scoped>
